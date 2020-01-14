@@ -1,13 +1,15 @@
 VARIABLE = gcc -Wall -g
 CLEAN = *.o *.a *.so
 
-all: trie run
+all: main run
 
-trie:
-	$(VARIABLE) -o ‫‪frequency‬‬.o ‫‪frequency‬‬.c
+main:
+	$(VARIABLE) -o ‫‪frequency‬‬ ‫‪frequency‬‬.c
 
 run:
-	./‫‪frequency‬‬.o
+	./‫‪frequency‬‬
+
+.PHONY: clean all 
 
 clean:
 	rm -f $(CLEAN)
