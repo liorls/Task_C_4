@@ -22,16 +22,14 @@ node *newNode()
 
 void insert(node *root, char *letter)
 {
-    int i;
     int index;
-    int length = strlen(letter);
-    if (*letter != '\n' && *letter != ' ' && *letter != '\n' && *letter != '\t')
+    if (*letter != '\0' && *letter != ' ' && *letter != '\n' && *letter != '\t')
     {
         node *p = root;
         while (*letter != '\n' && *letter != '\t' && *letter != ' ' && *letter != '\0')
         {
-            if ((*letter >= 'a' && *letter <= 'z') || (*letter >= 'A' && *letter <= 'Z'))
-            {
+            // if ((*letter >= 'a' && *letter <= 'z') || (*letter >= 'A' && *letter <= 'Z'))
+            // {
                 index = CHAR_TO_INDEX(*letter);
 
                 if (p->children[index] == NULL)
@@ -49,7 +47,7 @@ void insert(node *root, char *letter)
             p->isEndOfWord = TRUE;
         }
     }
-}
+
 void printWord(node *head, char *word, int index)
 {
     node *p = head;
@@ -103,5 +101,8 @@ void free_(node *root)
                 free(p);
             }
         }
+        free(p);
+
     }
+    
 }
