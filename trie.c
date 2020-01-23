@@ -7,7 +7,7 @@
 node *newNode()
 {
     node *Pnode = NULL;
-    Pnode = (node *)malloc(sizeof(node));
+    Pnode = (node*)malloc(sizeof(node));
     if (!Pnode)
         printf("Memory allocation error\n");
     for (int i = 0; i < NUM_LETTERS; i++)
@@ -23,13 +23,12 @@ node *newNode()
 void insert(node *root, char *letter)
 {
     int index;
-    if (*letter != '\0' && *letter != ' ' && *letter != '\n' && *letter != '\t')
-    {
+    if (*letter == '\0' && *letter == ' ' && *letter == '\n' && *letter == '\t') return;
+        int len = strlen(letter);
         node *p = root;
         while (*letter != '\n' && *letter != '\t' && *letter != ' ' && *letter != '\0')
         {
-            // if ((*letter >= 'a' && *letter <= 'z') || (*letter >= 'A' && *letter <= 'Z'))
-            // {
+        
                 index = CHAR_TO_INDEX(*letter);
 
                 if (p->children[index] == NULL)
@@ -45,7 +44,7 @@ void insert(node *root, char *letter)
             }
             p->count++;
             p->isEndOfWord = TRUE;
-        }
+        
     }
 
 void printWord(node *head, char *word, int index)
